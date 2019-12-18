@@ -7,6 +7,8 @@ CHORD_PATTERN = re.compile(
     r'^(?P<note>[CDEFGAB]#?)'
     r'(?P<name>M|(maj)?7|6|m(6|7|/maj7)?|7?sus[24]|dim7?|aug|5)?'
     r'(?P<nine>(add)?9[+-]?)?'
+    r'(?P<eleven>(add)?11[+-]?)?'
+    r'(?P<thirteen>(add)?13[+-]?)?'
     r'(?P<extra>((/5|/9|/11)[+-])*)?'
     r'$'
 )
@@ -102,6 +104,43 @@ class Chord:
                 'add9+':  15,
             }.get(nine)
 
+        eleven = groups['eleven']
+        if eleven:
+            if not eleven.startswith('add'):
+                if step7 is None:
+                    step7 = 10
+
+                if step9 is None:
+                    step9 = 14
+
+            step11 = {
+                '11-':  16,
+                '11':   17,
+                '11+':  18,
+                'add11-':  16,
+                'add11':   17,
+                'add11+':  18,
+            }.get(eleven)
+
+        thirteen = groups['thirteen']
+        if thirteen:
+            if not thirteen.startswith('add'):
+                if step7 is None:
+                    step7 = 10
+
+                if step9 is None:
+                    step9 = 14
+
+            step13 = {
+                '13-':  20,
+                '13':   21,
+                '13+':  22,
+                'add13-':  20,
+                'add13':   21,
+                'add13+':  22,
+            }.get(thirteen)
+
+
         extra = groups['extra']
         if extra:
             for e in extra.split('/'):
@@ -111,16 +150,9 @@ class Chord:
                         '5':  7,
                         '5+': 8,
                     }.get(e)
-#
-#                elif e.startswith('9'):
-#                    step4 = {
-#                        '9-': 13,
-#                        '9':  14,
-#                        '9+': 15,
-#                    }.get(e)
-#
+
 #                elif e.startswith('11'):
-#                    step5 = {
+#                    step11 = {
 #                        '11-': 16,
 #                        '11':  17,
 #                        '11+': 18,

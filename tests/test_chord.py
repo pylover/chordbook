@@ -41,16 +41,21 @@ def test_parse_chord():
     assert str(Chord.parse('Cadd11')) == 'C-E-G-F'
     assert str(Chord.parse('Cadd11-')) == 'C-E-G-E'
     assert str(Chord.parse('Cadd11+')) == 'C-E-G-F#'
+    assert str(Chord.parse('Cadd13')) == 'C-E-G-A'
+    assert str(Chord.parse('Cadd13-')) == 'C-E-G-G#'
+    assert str(Chord.parse('Cadd13+')) == 'C-E-G-A#'
 
     assert str(Chord.parse('C/5-')) == 'C-E-F#'
     assert str(Chord.parse('C/5+')) == 'C-E-G#'
 
-#    assert str(Chord.parse('Cadd13')) == 'C-E-G-A'
-#    assert str(Chord.parse('Cadd13-')) == 'C-E-G-G#'
-#    assert str(Chord.parse('Cadd13+')) == 'C-E-G-A#'
-#    assert str(Chord.parse('Cadd13+/5+')) == 'C-E-G#-A#'
-#
+    assert str(Chord.parse('Cadd13+/5+')) == 'C-E-G#-A#'
     #assert str(Chord.parse('C13/5+/9+/11-')) == 'C-E-G-A#'
+
+    assert str(Chord.parse('E7')) == 'E-G#-B-D'
+    assert str(Chord.parse('C')) == 'C-E-G'
+    assert str(Chord.parse('Cm')) == 'C-D#-G'
+    assert str(Chord.parse('G')) == 'G-B-D'
+    assert str(Chord.parse('G7')) == 'G-B-D-F'
 
 '''
           0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2
@@ -76,14 +81,12 @@ Caug      | . . . | . . . | . . . . . . . . . . . . . . . .
 C5        | . . . . . . | . . . . . . . . . . . . . . . . .
 C9        | . . . | . . | . . | . . . | . . . . . . . . . .
 Cadd9     | . . . | . . | . . . . . . | . . . . . . . . . .
-
-----
 Cadd11    | . . . | . . | . . . . . . . . . | . . . . . . .
 Cadd13    | . . . | . . | . . . . . . . . . . . . . | . . .
 C/5+      | . . . | . . . | . . . . . . . . . . . . . . . .
 C/5-      | . . . | . | . . . . . . . . . . . . . . . . . .
-Cm6       | . . | . . . | . | . . . . . . . . . . . . . . .
 Cm/maj7   | . . | . . . | . . . | . . . . . . . . . . . . .
+----
 
 Panthetonic
 Cm9       | . . | . . . | . . | . . . | . . . . . . . . . .
