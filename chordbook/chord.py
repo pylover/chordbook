@@ -5,7 +5,7 @@ from .note import Note
 
 CHORD_PATTERN = re.compile(
     r'^(?P<note>[CDEFGAB]#?)'
-    r'(?P<name>M|(maj)?7|6|m(6|7|/maj7)?|7?sus[24]|dim7?|aug|5)?'
+    r'(?P<name>M|(maj)?7|6|m(6|7|/maj7)?|7?sus[24]|dim7?|aug7?|5)?'
     r'(?P<nine>(add)?9[+-]?)?'
     r'(?P<eleven>(add)?11[+-]?)?'
     r'(?P<thirteen>(add)?13[+-]?)?'
@@ -74,6 +74,7 @@ class Chord:
 
             step5 = {
                 'aug': 8,
+                'aug7': 8,
                 'dim': 6,
                 'dim7': 6,
             }.get(name, 7)
@@ -88,6 +89,7 @@ class Chord:
                 '7sus4': 10,
                 'maj7': 11,
                 'm/maj7': 11,
+                'aug7': 12,
             }.get(name)
 
         nine = groups['nine']
