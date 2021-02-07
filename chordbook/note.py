@@ -37,7 +37,7 @@ class Note:
     def __add__(self, v):
         return self.__class__(self.c_offset + v)
 
-    def __isub(self, v):
+    def __isub__(self, v):
         self.c_offset -= v
 
     def __sub__(self, v):
