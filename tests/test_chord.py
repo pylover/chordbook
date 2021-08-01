@@ -76,6 +76,8 @@ def test_parse_chord():
     assert str(Chord.parse('Gdim')) == 'G-A#-C#'
     assert str(Chord.parse('Gdim7')) == 'G-A#-C#-E'
 
+    assert str(Chord.parse('Esus4')) == 'E-A-B'
+
 
 '''
           0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2
